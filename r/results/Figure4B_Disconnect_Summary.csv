@@ -1,0 +1,10 @@
+"Condition","mRNA_Bin","Mean_Protein_log2FC","N_Proteins"
+"Dexamethasone","Downregulated (log2FC < -0.5)",-0.536798362560539,36
+"Dexamethasone","Unchanged (-0.5 to 0.5)",-0.0515821717769452,2322
+"Dexamethasone","Upregulated (log2FC > 0.5)",0.0380525955119125,1143
+"LLC Cancer","Downregulated (log2FC < -0.5)",-0.0888461183583669,110
+"LLC Cancer","Unchanged (-0.5 to 0.5)",-0.0124988887935471,3263
+"LLC Cancer","Upregulated (log2FC > 0.5)",0.137775692591753,128
+"Aging","Downregulated (log2FC < -0.5)",-0.369533256771094,20
+"Aging","Unchanged (-0.5 to 0.5)",0.0517949261780722,3273
+"Aging","Upregulated (log2FC > 0.5)",0.211500836207325,208

@@ -1,0 +1,11 @@
+Integrated genomic and proteomic analyses identify stimulus-dependent molecular changes associated with distinct modes of skeletal muscle atrophy
+Supplemental Table S3
+TMT proteomic datasets and analysis. Values expressed represent the spectral counts.
+"""-log10(P)"" and ""log2(FC)"" represent the log transformed variables used for volcano plots. P is the adjusted P value, and FC is the fold change in levels compared to control. ""SIG"" indicates where P<0.05"
+""
+"""Aging"" Contains the dataset comparing TMT from 6 month (Control) vs 24 month old (Old) TA muscles (n=5)"
+"""Dexamethasone"" Contains the dataset comparing TMT from untreated (Control) vs dexamethasone treated (Dexa) TA muscles (n=4)"
+"""LLC"" Contains the dataset comparing TMT from non-tumour controls (Control) vs LLC tumour mouse (LLC) TA muscles (n=4)"
+"""Cross-comparisons"" contains the log2FC for transcripts and proteins detected in all three treatments for cross-comparison purposes as well as proteomics data following denervation"
+"""Fig3/4/5"" contains transformed data of selected differentially expressed proteins color coded by change in expression used for the Figure 3/4/5 Heatmaps"
+"""Aging-Muscle Correlation"" Contains the overall correlation values obtained for each protein and the muscle mass for that specific animal. Correlations compared to absolute TA mass, TA mass normalized to body mass and TA mass normalized to tibia length are also present"

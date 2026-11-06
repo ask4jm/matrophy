@@ -1,0 +1,10 @@
+Integrated genomic and proteomic analyses identify stimulus-dependent molecular changes associated with distinct modes of skeletal muscle atrophy
+Supplemental Table S1
+RNA Sequencing datasets and analysis. Values expressed represent the transcripts per kilobase million (TPM).
+"""-log10(P)"" and ""log2(FC)"" represent the log transformed variables used for volcano plots. P is the adjusted P value, and FC is the fold change in levels compared to control. ""SIG"" indicates where P<0.05"
+""
+"""Aging"" Contains the dataset comparing RNA sequencing from 6 month (Control) vs 24 month old (Old) TA muscles (n=3)"
+"""Dexamethasone"" Contains the dataset comparing RNA sequencing from untreated (Control) vs dexamethasone treated (Dexa) TA muscles (n=4)"
+"""LLC"" Contains the dataset comparing RNA sequencing from non-tumour controls (Control) vs LLC tumour mouse (LLC) TA muscles (n=3)"
+"""Cross-comparisons"" contains the log2FC for transcripts detected in all three treatments for cross-comparison purposes"
+"""Fig2 Heatmap"" contains transformed data of selected differentially expressed genes color coded by change in expression used for the Figure 2 Heatmap"

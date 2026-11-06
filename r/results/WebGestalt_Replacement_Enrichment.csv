@@ -1,0 +1,19 @@
+"Condition","Pathway","Overlap","Pathway_Size","P_Value","Enrichment_Score","minus_log10_p"
+"Dexamethasone (Dex)","Collagen & Extracellular Matrix",6,18,0.000274852582404256,6.10663507109005,3.5609001782229
+"Dexamethasone (Dex)","Inflammatory & Immune Response (IL1/IL6)",7,17,1.70190381771375e-05,7.54349038193476,4.76906498750437
+"Dexamethasone (Dex)","Lipid & Lipoprotein Metabolic Process",1,16,0.592782136021756,1.14499407582938,0.227104892653687
+"Dexamethasone (Dex)","Proteasome & Ubiquitin-Dependent Degradation",1,16,0.592782136021756,1.14499407582938,0.227104892653687
+"Dexamethasone (Dex)","Mitochondrial Respiration & Gene Expression",0,15,1,0,0
+"Dexamethasone (Dex)","Wnt Signaling & Muscle Regeneration",3,16,0.0533544715409325,3.43498222748815,1.27282917728592
+"LLC Cancer Cachexia","Collagen & Extracellular Matrix",0,18,1,0,0
+"LLC Cancer Cachexia","Inflammatory & Immune Response (IL1/IL6)",2,17,0.00714641989217359,15.5919327731092,2.14591147015196
+"LLC Cancer Cachexia","Lipid & Lipoprotein Metabolic Process",0,16,1,0,0
+"LLC Cancer Cachexia","Proteasome & Ubiquitin-Dependent Degradation",1,16,0.114163782339797,8.28321428571429,0.942471651122464
+"LLC Cancer Cachexia","Mitochondrial Respiration & Gene Expression",0,15,1,0,0
+"LLC Cancer Cachexia","Wnt Signaling & Muscle Regeneration",0,16,1,0,0
+"Aging (Sarcopenia)","Collagen & Extracellular Matrix",0,18,1,0,0
+"Aging (Sarcopenia)","Inflammatory & Immune Response (IL1/IL6)",2,17,0.0388148094355645,6.34555403556771,1.41100254169909
+"Aging (Sarcopenia)","Lipid & Lipoprotein Metabolic Process",1,16,0.258828586961043,3.37107558139535,0.586987758630081
+"Aging (Sarcopenia)","Proteasome & Ubiquitin-Dependent Degradation",0,16,1,0,0
+"Aging (Sarcopenia)","Mitochondrial Respiration & Gene Expression",0,15,1,0,0
+"Aging (Sarcopenia)","Wnt Signaling & Muscle Regeneration",0,16,1,0,0

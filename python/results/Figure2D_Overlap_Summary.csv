@@ -1,0 +1,3 @@
+Category,Total Dex,Total LLC,Total Aging,Unique Dex,Unique LLC,Unique Aging,Dex & LLC,Dex & Aging,LLC & Aging,Shared by All 3
+"Upregulated (p<0.05, log2FC>1)",1266,175,430,1191,148,367,19,55,7,1
+"Downregulated (p<0.05, log2FC<-1)",391,381,40,362,351,38,28,0,1,1

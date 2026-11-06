@@ -1,0 +1,6 @@
+Integrated genomic and proteomic analyses identify stimulus-dependent molecular changes associated with distinct modes of skeletal muscle atrophy
+Supplemental Table S5
+RNA sequencing datasets and analysis . Values expressed represent the transcripts per kilobase million (TPM).
+"""-log10(P)"" and ""log2(FC)"" represent the log transformed variables used for volcano plots. P is the adjusted P value, and FC is the fold change in levels compared to control. ""SIG"" indicates where P<0.05"
+""
+"""CYR61"" Contains the dataset comparing RNA sequencing from 30 month old mice electroporated with control siRNA (siNT) vs Cyr61 siRNA (siCYR) TA muscles (n=3)"
