@@ -309,4 +309,99 @@ for (i in 1:nrow(wnt_df)) {
 dev.off()
 cat(sprintf("Saved: %s\n", fig6_path))
 
+# ------------------------------------------------------------------------------
+# 6. FIGURE 2E: HEATMAP OF SHARED DEGS ACROSS ATROPHY MODES
+# ------------------------------------------------------------------------------
+cat("\nGenerating Figure 2E Heatmap (Shared DEGs across Atrophy Modes)...\n")
+fig2e_csv <- file.path(repo_root, "data", "supplementary", "Table_S6_Fig2E_Heatmap.csv")
+
+if (file.exists(fig2e_csv)) {
+  raw_2e <- read.csv(fig2e_csv, check.names = FALSE, stringsAsFactors = FALSE)
+  genes_2e <- raw_2e[[1]]
+  mat_2e <- as.matrix(raw_2e[, 2:22])
+  log2_2e <- log2(mat_2e)
+  log2_2e_capped <- pmax(pmin(log2_2e, 2.0), -2.0)
+  
+  cat_splits <- list(
+    "ALL UP" = 1:9,
+    "OLD AND DEXA UP" = 10:40,
+    "OLD AND LLC UP" = 41:45,
+    "DEXA AND LLC UP" = 46:69,
+    "DEXA AND LLC DOWN" = 70:85,
+    "ALL DOWN" = 86:86
+  )
+  
+  n_colors <- 101
+  palette_fun <- colorRampPalette(c("#b2182b", "#d6604d", "#f4a582", "#ffffff", "#92c5de", "#4393c3", "#2166ac"))
+  hm_colors <- palette_fun(n_colors)
+  
+  get_hm_col <- function(val) {
+    if (is.na(val)) return("#707070")
+    idx <- round((val - (-2)) / (2 - (-2)) * (n_colors - 1)) + 1
+    idx <- max(1, min(n_colors, idx))
+    return(hm_colors[idx])
+  }
+  
+  fig2e_path <- file.path(figures_dir, "Figure2E_Heatmap_Shared_DEGs.png")
+  png(fig2e_path, width = 2400, height = 4800, res = 300)
+  par(mar = c(3, 8.5, 5, 10), bg = "white")
+  
+  n_r <- nrow(log2_2e_capped)
+  n_c <- ncol(log2_2e_capped)
+  
+  plot(0, 0, type = "n", xlim = c(0, n_c), ylim = c(0, n_r),
+       xaxs = "i", yaxs = "i", axes = FALSE, xlab = "", ylab = "")
+       
+  for (r in 1:n_r) {
+    yb <- n_r - r
+    yt <- yb + 1
+    for (c in 1:n_c) {
+      xl <- c - 1
+      xr <- c
+      rect(xl, yb, xr, yt, col = get_hm_col(log2_2e_capped[r, c]), border = NA)
+    }
+    text(-0.3, yb + 0.5, labels = genes_2e[r], adj = 1, cex = 0.55, font = 3, xpd = TRUE)
+  }
+  
+  for (c in 0:n_c) abline(v = c, col = "white", lwd = 0.4)
+  for (b in c(0, 3, 6, 10, 14, 17, 21)) abline(v = b, col = "black", lwd = 1.2)
+  
+  ay <- n_r + 0.5
+  text(1.5, ay, "Control", font = 2, cex = 0.8, xpd = TRUE)
+  text(4.5, ay, "Old", font = 2, cex = 0.8, xpd = TRUE)
+  text(8.0, ay, "Control", font = 2, cex = 0.8, xpd = TRUE)
+  text(12.0, ay, "Dexa", font = 2, cex = 0.8, xpd = TRUE)
+  text(15.5, ay, "Control", font = 2, cex = 0.8, xpd = TRUE)
+  text(19.0, ay, "LLC", font = 2, cex = 0.8, xpd = TRUE)
+  
+  for (cn in names(cat_splits)) {
+    rows_c <- cat_splits[[cn]]
+    yt <- n_r - (min(rows_c) - 1)
+    yb <- n_r - max(rows_c)
+    abline(h = yt, col = "black", lwd = 1.2)
+    abline(h = yb, col = "black", lwd = 1.2)
+    text(n_c + 0.8, (yt + yb)/2, labels = cn, adj = 0, font = 2, cex = 0.75, xpd = TRUE)
+  }
+  
+  box(lwd = 1.5)
+  text(-6.5, n_r + 2.2, labels = "E", font = 2, cex = 1.8, xpd = TRUE)
+  
+  cb_x <- 16.5
+  cb_w <- 5.5
+  cb_y <- n_r + 2.2
+  text(cb_x + cb_w/2, cb_y + 1.2, "Fold Change", font = 2, cex = 0.65, xpd = TRUE)
+  for (i in 1:length(hm_colors)) {
+    x0 <- cb_x + (i - 1)*(cb_w/length(hm_colors))
+    x1 <- cb_x + i*(cb_w/length(hm_colors))
+    rect(x0, cb_y, x1, cb_y + 0.8, col = hm_colors[i], border = NA, xpd = TRUE)
+  }
+  rect(cb_x, cb_y, cb_x + cb_w, cb_y + 0.8, border = "black", lwd = 0.6, xpd = TRUE)
+  text(cb_x, cb_y - 0.6, "0.25", cex = 0.55, font = 2, xpd = TRUE)
+  text(cb_x + cb_w/2, cb_y - 0.6, "1", cex = 0.55, font = 2, xpd = TRUE)
+  text(cb_x + cb_w, cb_y - 0.6, "4", cex = 0.55, font = 2, xpd = TRUE)
+  
+  dev.off()
+  cat(sprintf("Saved: %s\n", fig2e_path))
+}
+
 cat("\nAll R reproduction figures generated successfully in r/figures/!\n")

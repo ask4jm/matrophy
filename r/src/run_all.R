@@ -37,7 +37,10 @@ find_script_dir <- function() {
 script_dir <- find_script_dir()
 cat(sprintf("Using R scripts directory: %s\n\n", script_dir))
 
-cat("Module 1: Vectorized Student's t-test Differential Expression...\n")
+cat("Module 0: Morphometrics & Histological Phenotyping (Figures 1A, 1B, 1C)...\n")
+source(file.path(script_dir, "01_plot_figure1_morphometrics.R"))
+
+cat("\nModule 1: Vectorized Student's t-test Differential Expression...\n")
 source(file.path(script_dir, "01_differential_expression.R"))
 
 cat("\nModule 2: Partek Replacement with Bioconductor limma...\n")
@@ -45,6 +48,7 @@ source(file.path(script_dir, "01_partek_replacement_limma.R"))
 
 cat("\nModule 3: Spotfire & Prism Replacement: Publication Figures...\n")
 source(file.path(script_dir, "02_plot_figures.R"))
+source(file.path(script_dir, "02_plot_figure2_gsea_venn.R"))
 
 cat("\nModule 4: WebGestalt Replacement: Functional Over-Representation Analysis...\n")
 source(file.path(script_dir, "04_webgestalt_replacement_gsea.R"))

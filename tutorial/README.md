@@ -17,6 +17,9 @@ All scripts are self-contained, fully commented, and located in the [`tutorial/`
 | [`03_barplots_and_atrogenes.R`](file:///c:/ME/matrophy/tutorial/03_barplots_and_atrogenes.R) | 🟡 Intermediate | `geom_col()` vs `geom_bar()`, dodging bars side-by-side (`position_dodge`), controlling category sort order using `factor()`, zero baseline lines. | [`Tutorial_Figure2D_2F_Barplots.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure2D_2F_Barplots.png) |
 | [`04_multiomics_correlation.R`](file:///c:/ME/matrophy/tutorial/04_multiomics_correlation.R) | 🔴 Advanced | Multi-omics scatter plots (RNA vs Protein), adding linear trendlines (`geom_smooth`), computing Pearson $r$ & $R^2$ dynamically, faceting grids with `facet_wrap()`. | [`Tutorial_Figure4A_RNA_Protein_Correlation.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure4A_RNA_Protein_Correlation.png) |
 | [`05_master_paper_figure.R`](file:///c:/ME/matrophy/tutorial/05_master_paper_figure.R) | 🏆 Master | Stitching multi-row figures (`/` and `|`), automatic panel tags (`A`, `B`, `C`), exporting 300 DPI PNG & vector PDF via `ggsave()`. | [`Tutorial_Master_Paper_Ready_Figure.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Master_Paper_Ready_Figure.png) |
+| [`06_heatmap_shared_genes_fig2e.R`](file:///c:/ME/matrophy/tutorial/06_heatmap_shared_genes_fig2e.R) | 🏆 Master | Genomic Heatmaps: Red-White-Blue color gradients, missing data shading (`NA` grey), category dividers, and recreating Figure 2E. | [`Tutorial_Figure2E_Heatmap_Shared_DEGs.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure2E_Heatmap_Shared_DEGs.png) |
+| [`07_figure1_morphometrics_and_myofibers.R`](file:///c:/ME/matrophy/tutorial/07_figure1_morphometrics_and_myofibers.R) | 🟡 Intermediate | Physiological & Myofiber Phenotyping: Bar plots with sample jitter dots, error bars (SEM), % change callouts, fiber types (2A, 2X, 2B), reproducing Figures 1A, 1B, 1C across 30 sheets. | [`Tutorial_Figure1A_Dexamethasone_Morphometrics.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure1A_Dexamethasone_Morphometrics.png) |
+| [`08_figure2_complete_gsea_venn_composite.R`](file:///c:/ME/matrophy/tutorial/08_figure2_complete_gsea_venn_composite.R) | 🏆 Master | Complete Figure 2 Reproduction: GSEA NES horizontal bars with FDR thresholds, 3-way Venn diagrams (Up/Down DEGs), and 4 landmark atrogene panels (*Fbxo32*, *Trim63*, *Ctsl*, *Psmd11*). | [`Tutorial_Figure2_GSEA_NES_Bars.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure2_GSEA_NES_Bars.png), [`Tutorial_Figure2D_Venn_Diagrams.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure2D_Venn_Diagrams.png), [`Tutorial_Figure2F_Individual_Atrogenes.png`](file:///c:/ME/matrophy/tutorial/figures/Tutorial_Figure2F_Individual_Atrogenes.png) |
 
 ---
 
@@ -206,6 +209,24 @@ ggsave(
   device = "pdf"
 )
 ```
+
+---
+
+## 7. Recreating Paper Figure 1 & Figure 2
+
+### A. Figure 1: Morphometrics & Histological Phenotyping
+- **Data Source**: 30 sheets in `NIHMS1756261-supplement-6.xlsx` extracted to CSVs in [`data/supplementary/`](file:///c:/ME/matrophy/data/supplementary/).
+- **Panels**:
+  1. **Top Row**: 5 bar charts per condition (Body mass, Tibia length, TA mass, TA/body mass ratio, TA/tibia length ratio) with individual sample points, $\pm\text{SEM}$ error bars, Student's $t$-test $P$-values, and percentage change.
+  2. **Bottom Row**: 5 myofiber morphological metrics (Total myofiber number, Feret's minimal diameter, Type-specific count for 2A, 2X, 2B, Type-specific proportion %, Type-specific minimal diameter).
+- **Key Finding**: Total myofiber count remains constant ($P \ge 0.280$), while Type 2B fast glycolytic fibers shrink selectively in all three modes ($P \le 0.001$ to $0.034$).
+
+### B. Figure 2: Transcriptomic Signatures, GSEA, and Atrogene Disconnect
+- **Volcano Plots (Fig 2A-C left)**: $\log_2(\text{Fold Change})$ vs $-\log_{10}(P\text{-value})$ with landmark genes highlighted (*Trim63*, *Fbxo32*, *Cyr61*).
+- **GSEA Pathways (Fig 2A-C right)**: Horizontal bidirectional barplots of Normalized Enrichment Score (NES) colored by FDR significance ($\text{FDR} \le 0.05$ vs $> 0.05$).
+- **Venn Overlaps (Fig 2D)**: 3-way Venn diagrams for Upregulated and Downregulated genes demonstrating the dramatic stimulus-specificity of muscle atrophy.
+- **Shared DEGs Heatmap (Fig 2E)**: Red-White-Blue gradient across 86 shared DEGs partitioned into 6 distinct categories with missing data represented by dark gray blocks.
+- **Landmark Atrogenes (Fig 2F)**: Four dedicated panels (*Fbxo32*, *Trim63*, *Ctsl*, *Psmd11*) illustrating the classic atrogene disconnect: robust induction in Dexamethasone and LLC Cancer, but no induction in Sarcopenic Aging.
 
 ---
 

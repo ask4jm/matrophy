@@ -13,35 +13,51 @@ This repository contains the computational reproduction suite for the *Cell Repo
 
 The codebase is partitioned into two dedicated language-specific reproduction suites, each with its own comprehensive documentation:
 
+- 📁 [**`tutorial/README.md` — Beginner's R & Plotting Tutorial**](tutorial/README.md):
+  - Progressive step-by-step tutorial suite (8 scripts) guiding users from R basics to publication-ready 300 DPI composite figures.
+  - Covers volcano plots, dodged bar plots, GSEA NES horizontal bars, 3-way Venn diagrams, multi-omics correlation, genomic heatmaps, and physiological morphometrics.
 - 📁 [**`r/README.md` — Complete R Pipeline**](r/README.md):
   - **100% R Implementation**: Replaces proprietary software (Partek, Spotfire, GraphPad Prism, WebGestalt) with open-source R & Bioconductor packages (`limma`, `stats::prcomp`, `ggplot2`, and hypergeometric over-representation testing).
-  - High-speed vectorized statistical testing and publication-quality 300 DPI visualization.
+  - High-speed vectorized statistical testing, physiological phenotyping (Figures 1A-C), transcriptomic GSEA/Venn/Heatmap (Figures 2A-F), and publication-quality 300 DPI visualization.
 - 📁 [**`python/README.md` — Complete Python Pipeline**](python/README.md):
-  - NumPy, SciPy, Pandas, and Matplotlib implementation for independent cross-language validation.
+  - NumPy, SciPy, Pandas, and Matplotlib implementation for independent cross-language validation reproducing Figures 1A-C, 2A-F, 4A-B, 5A, 6, and 7B.
 
 ```
 matrophy/
 ├── README.md                              # This file: Main repository landing guide
 ├── test.R                                 # Quick-start script in repository root
+├── tutorial/                              # Beginner to Advanced Tutorial Suite (See tutorial/README.md)
+│   ├── README.md                          # Tutorial guide and cheatsheet
+│   ├── 01_r_basics_and_data_loading.R     # Lesson 1: Vectors, indexing, reading CSVs
+│   ├── 02_volcano_plots_step_by_step.R    # Lesson 2: ggplot2 volcano plots & layers
+│   ├── 03_barplots_and_atrogenes.R        # Lesson 3: Dodged barplots & factor levels
+│   ├── 04_multiomics_correlation.R        # Lesson 4: Linear regression & facet grids
+│   ├── 05_master_paper_figure.R           # Lesson 5: Stitching composite figures
+│   ├── 06_heatmap_shared_genes_fig2e.R    # Lesson 6: Genomic heatmap reproduction
+│   ├── 07_figure1_morphometrics_and_myofibers.R # Lesson 7: Phenotyping & fiber sizing
+│   ├── 08_figure2_complete_gsea_venn_composite.R # Lesson 8: Complete Fig 2 reproduction
+│   └── figures/                           # 300 DPI figures and PDF outputs
+│
 ├── data/                                  # Common RNA-seq datasets (GSE159952)
 │   ├── GSE159952_all.tpm.txt.gz          # Complete TPM expression matrix (47,643 genes, 30 samples)
-│   └── GSE159952_series_matrix.txt.gz    # GEO experiment metadata
+│   ├── GSE159952_series_matrix.txt.gz    # GEO experiment metadata
+│   └── supplementary/                     # 30 Figure 1 sheets, Table S2 GSEA, Table S3, Table S6
 │
 ├── r/                                     # Dedicated R Pipeline (See r/README.md)
 │   ├── README.md                         # Detailed R documentation
-│   ├── src/                              # R scripts (limma, t-test, plotting, GSEA)
+│   ├── src/                              # R scripts (morphometrics, limma, t-test, plotting, GSEA)
 │   ├── results/                          # DEG tables, PCA coordinates, enrichment results
 │   └── figures/                          # 300 DPI figures reproduced in R
 │
 └── python/                                # Dedicated Python Pipeline (See python/README.md)
     ├── README.md                         # Detailed Python documentation
-    ├── src/                              # Python scripts (differential expression & plotting)
+    ├── src/                              # Python scripts (morphometrics, differential expression & plotting)
     ├── results/                          # Python DEG tables and overlap summaries
     └── figures/                          # 300 DPI figures reproduced in Python
 ```
 
 ---
-
+|
 ## 2. Software Translation: Replacing Closed Software with Open R Alternatives
 
 A primary contribution of this reproduction is replacing the proprietary tools used by Hunt et al. with open-source R packages:

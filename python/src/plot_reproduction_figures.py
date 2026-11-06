@@ -331,4 +331,68 @@ fig6_path = os.path.join(figures_dir, 'Figure6_Cyr61_Knockdown_Wnt.png')
 plt.savefig(fig6_path)
 plt.close()
 
+# 6. FIGURE 2E: HEATMAP OF SHARED DEGS ACROSS ATROPHY MODES
+fig2e_csv = os.path.join(repo_root, 'data', 'supplementary', 'Table_S6_Fig2E_Heatmap.csv')
+if os.path.exists(fig2e_csv):
+    print("Generating Figure 2E Heatmap...")
+    df_2e = pd.read_csv(fig2e_csv)
+    genes_2e = df_2e.iloc[:, 0].values
+    mat_2e = df_2e.iloc[:, 1:22].values.astype(float)
+    
+    # log2 transform fold changes (0.25 -> -2, 1 -> 0, 4 -> +2)
+    log2_2e = np.log2(mat_2e)
+    log2_2e_capped = np.clip(log2_2e, -2.0, 2.0)
+    
+    fig, ax = plt.subplots(figsize=(8, 16), dpi=300)
+    
+    # Custom colormap: Red-White-Blue with dark grey for NaNs
+    import copy
+    cmap = copy.copy(matplotlib.colormaps['RdBu_r'])
+    cmap.set_bad(color='#707070')
+    
+    im = ax.imshow(log2_2e_capped, aspect='auto', cmap=cmap, vmin=-2, vmax=2)
+    
+    # Add vertical divider lines
+    group_boundaries = [2.5, 5.5, 9.5, 13.5, 16.5]
+    for b in group_boundaries:
+        ax.axvline(b, color='black', linewidth=1.2)
+        
+    # Add horizontal category boundaries
+    cat_boundaries = [8.5, 39.5, 44.5, 68.5, 84.5]
+    cat_names = [
+        ("ALL UP", 4.0),
+        ("OLD AND DEXA UP", 24.0),
+        ("OLD AND LLC UP", 42.0),
+        ("DEXA AND LLC UP", 56.5),
+        ("DEXA AND LLC DOWN", 76.5),
+        ("ALL DOWN", 85.0)
+    ]
+    for b in cat_boundaries:
+        ax.axhline(b, color='black', linewidth=1.2)
+        
+    for name, y_pos in cat_names:
+        ax.text(21.5, y_pos, name, va='center', ha='left', fontsize=8, fontweight='bold')
+        
+    ax.set_yticks(np.arange(len(genes_2e)))
+    ax.set_yticklabels(genes_2e, fontsize=6, fontstyle='italic')
+    
+    # Column tick labels
+    col_ticks = [1, 4, 7.5, 11.5, 15, 18.5]
+    col_labels = ['Control', 'Old', 'Control', 'Dexa', 'Control', 'LLC']
+    ax.set_xticks(col_ticks)
+    ax.set_xticklabels(col_labels, fontsize=9, fontweight='bold')
+    ax.tick_params(top=True, labeltop=True, bottom=False, labelbottom=False)
+    
+    # Colorbar
+    cbar = fig.colorbar(im, ax=ax, orientation='horizontal', fraction=0.03, pad=0.02, shrink=0.5)
+    cbar.set_ticks([-2, 0, 2])
+    cbar.set_ticklabels(['0.25', '1', '4'])
+    cbar.set_label('fold change', fontsize=8, fontweight='bold')
+    
+    plt.tight_layout()
+    fig2e_path = os.path.join(figures_dir, 'Figure2E_Heatmap_Shared_DEGs.png')
+    plt.savefig(fig2e_path, bbox_inches='tight')
+    plt.close()
+    print(f"Figure 2E Heatmap saved to {fig2e_path}")
+
 print("All Python reproduction figures generated successfully!")

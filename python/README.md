@@ -25,12 +25,14 @@ python/
 ├── README.md                              # This file: Python pipeline documentation
 ├── src/
 │   ├── 00_download_data.py               # Data Acquisition: Automated GEO download & repository guides
-│   ├── run_all.py                        # Master Orchestrator: runs full pipeline end-to-end
+│   ├── 01_plot_figure1_morphometrics.py  # Physiological & myofiber phenotyping (Figs 1A, 1B, 1C)
 │   ├── differential_expression.py        # Differential expression pipeline (Student's t-test)
-│   ├── plot_reproduction_figures.py      # Publication-quality figure generation (300 DPI)
+│   ├── plot_reproduction_figures.py      # Publication-quality figure generation (Volcanoes, PCA, Heatmap 2E)
+│   ├── 02_plot_figure2_gsea_venn.py      # Figure 2 GSEA NES bars, 3-way Venn diagrams, Fig 2F atrogenes
 │   ├── 03_multiomics_integration.py      # RNA-Protein Correlation, Disconnect, Core Atroproteins
 │   ├── 05_muscle_mass_correlation.py     # Sarcopenia Phenotype: Proteome vs Muscle Mass Correlation
-│   └── extract_captions.py               # Extraction of paper captions and statistical parameters
+│   ├── extract_captions.py               # Extraction of paper captions and statistical parameters
+│   └── run_all.py                        # Master Orchestrator: runs full pipeline end-to-end
 ├── results/                               # Generated tables and statistical summaries
 │   ├── Dexamethasone_DEGs.csv            # Dex differential expression results
 │   ├── LLC_Cancer_DEGs.csv               # LLC differential expression results
@@ -44,15 +46,22 @@ python/
 │   ├── shared_all_3_upregulated_genes.txt
 │   └── shared_all_3_downregulated_genes.txt
 └── figures/                               # Generated 300 DPI figures
-    ├── Figure2_VolcanoPlots.png          # Figure 2A-C: Volcano plots
-    ├── Figure2D_Stimulus_Specific_vs_Shared.png # Figure 2D: Overlap breakdown
-    ├── Figure2F_Classic_Atrogenes.png    # Figure 2F: Expression of 16 classic atrogenes
+    ├── Figure1A_Dexamethasone_Morphometrics.png # Figure 1A: Dex body mass, TA, and fiber sizing
+    ├── Figure1B_LLC_Morphometrics.png           # Figure 1B: LLC body mass, TA, and fiber sizing
+    ├── Figure1C_Aging_Morphometrics.png         # Figure 1C: Aging body mass, TA, and fiber sizing
+    ├── Figure2_GSEA_NES_Bars.png                # Figure 2A-C right: GSEA Normalized Enrichment Scores
+    ├── Figure2_VolcanoPlots.png                 # Figure 2A-C left: Volcano plots
+    ├── Figure2D_Stimulus_Specific_vs_Shared.png # Figure 2D: Overlap breakdown barplot
+    ├── Figure2D_Venn_Diagrams.png               # Figure 2D: 3-way Venn diagrams (Up & Down)
+    ├── Figure2E_Heatmap_Shared_DEGs.png         # Figure 2E: Heatmap of 86 shared DEGs across 6 clusters
+    ├── Figure2F_Classic_Atrogenes.png           # Figure 2F: Overview of classic atrogenes
+    ├── Figure2F_Individual_Atrogenes.png        # Figure 2F: Dedicated panels (Fbxo32, Trim63, Ctsl, Psmd11)
     ├── Figure4A_RNA_Protein_Correlation.png     # Figure 4A: Matched transcriptome-proteome scatter
     ├── Figure4B_Disconnect_Barplot.png          # Figure 4B: mRNA vs Protein disconnect
     ├── Figure5A_Top_Atroproteins.png            # Figure 5A: Consistently regulated atroproteins
-    ├── Figure6_Cyr61_Knockdown_Wnt.png   # Figure 6F & 6H: Cyr61/Wnt modulation
+    ├── Figure6_Cyr61_Knockdown_Wnt.png          # Figure 6F & 6H: Cyr61/Wnt modulation
     ├── Figure7B_Muscle_Mass_Correlation.png     # Figure 7B: Protein correlation with TA muscle mass
-    └── FigureS1C_PCA.png                 # Figure S1C: PCA across 30 samples
+    └── FigureS1C_PCA.png                        # Figure S1C: PCA across 30 samples
 ```
 
 ---

@@ -21,8 +21,10 @@ def main():
     print("100% Python Reproduction Suite (Hunt et al., Cell Reports 2021)")
     print("=================================================================")
 
+    run_step("01_plot_figure1_morphometrics.py")
     run_step("differential_expression.py")
     run_step("plot_reproduction_figures.py")
+    run_step("02_plot_figure2_gsea_venn.py")
     run_step("03_multiomics_integration.py")
     run_step("05_muscle_mass_correlation.py")
 
